@@ -13,13 +13,13 @@ app.use(express.urlencoded( { extended: true} ));
 
 app.get("/", async(req, res) => {
     res.send("express running");
-    if (!manager.checkProduct()) {
+    if (!manager.getAllProducts()) {
         await manager.cargarArchivo();
     };
 });
 
 app.get("/products", async (req, res) => {
-    if (!manager.checkProduct()) {
+    if (!manager.getAllProducts()) {
         await manager.cargarArchivo();
     }
 

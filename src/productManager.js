@@ -21,16 +21,23 @@ class product {
         this.stock = stock;
     }
 }
-//productos
+//productos ---------------------------------------------------------------------------------------------------------
 // title, description, price, thumbnail, code, stock
 const product1 = new product("Grafica Nvidia GTX 1650", "4GB de vram", 68000, "https://m.media-amazon.com/images/I/61rzWyQBAoL._AC_SL1024_.jpg", "aaaa", 14);
 const product2 = new product("Grafica Nvidia GTX 1660 SUPER", "6gb de vram", 87000, "https://arrichetta.com.ar/wp-content/uploads/2020/10/c5e5f2cf-b57c-4a5e-b9d3-d0bb76bc768d.c1cacebe43e9f18d92ce81be46266920.jpeg", "aaab", 18);
 const product3 = new product("Grafica Nvidia RTX 2060", "12gb de vram", 94000, "https://fullh4rd.com.ar/img/productos/Pics_Prod/video-geforce-rtx-2060-6gb-msi-ventus-gp-oc-0.jpg", "aaac", 17);
 const product4 = new product("Grafica Nvidia RTX 3050", "8gb de vram", 94000, "https://fullh4rd.com.ar/img/productos/Pics_Prod/video-geforce-rtx-3050-8gb-evga-xc-gaming-dual-fan-0.jpg", "aaad", 32);
 const product5 = new product("Grafica Amd Rx 6500 XT", "4gb de vram", 52000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 16);
+const product6 = new product("Grafica Amd Rx 6500 XT", "4gb de vram", 52000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 16);
+const product7 = new product("Grafica Amd Rx 6500 XT", "4gb de vram", 52000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 16);
+const product8 = new product("Grafica Amd Rx 6500 XT", "4gb de vram", 52000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 16);
+const product9 = new product("Grafica Amd Rx 6500 XT", "4gb de vram", 52000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 16);
+const product10 = new product("Grafica Amd Rx 6500 XT", "4gb de vram", 52000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 16);
+
 const productVacio = new product("", "", "", "", "", "");
 const productPrueba = new product("Producto Prueba", "esto es un producto prueba", 200, "Sin imagen", "abc123", 25);
 
+// ------------------------------------------------------------------------------------------------------------------
 
 
 class ProductManager {
@@ -38,7 +45,7 @@ class ProductManager {
         this.path = ruta;
     }
 
-    checkArchivo = async() => {
+    checkProduct = async() => {
         return fs.existsSync(this.path);
     }
 
