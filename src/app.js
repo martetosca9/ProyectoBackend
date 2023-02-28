@@ -33,11 +33,13 @@ app.get("/products", async (req, res) => {
     const products = await manager.getAllProducts(); 
     if (products.length>0) {
         const { limit } = req.query;
+        console.log(limit)
         let data;
         if ( !limit ) {
             data = products;
-        } else { products.slice(0, parseInt(limit)); }
-        res.send(data);
+        } else {
+            data = products.slice(0, parseInt(limit)); }
+            res.send(data);
     } else {
         res.send ("no hay productos en el archivo")
     }
