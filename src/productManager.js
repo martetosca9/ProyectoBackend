@@ -1,14 +1,5 @@
 import fs from "fs";
-// const ruta = "./data.json";
-
-const crearArchivo = async (ruta) => {
-    if (!fs.existsSync(ruta)){
-        await fs.promises.writeFile(ruta, "[]")
-    }else if ((await fs.promises.readFile(ruta,"utf-8")).length==0){
-        await fs.promises.writeFile(ruta, "[]")
-    }
-}
-
+const ruta = "./src/data.json";
 
 
 class product {
@@ -28,11 +19,11 @@ const product2 = new product("Grafica Nvidia GTX 1660 SUPER", "6gb de vram", 870
 const product3 = new product("Grafica Nvidia RTX 2060", "12gb de vram", 94000, "https://fullh4rd.com.ar/img/productos/Pics_Prod/video-geforce-rtx-2060-6gb-msi-ventus-gp-oc-0.jpg", "aaac", 17);
 const product4 = new product("Grafica Nvidia RTX 3050", "8gb de vram", 94000, "https://fullh4rd.com.ar/img/productos/Pics_Prod/video-geforce-rtx-3050-8gb-evga-xc-gaming-dual-fan-0.jpg", "aaad", 32);
 const product5 = new product("Grafica Amd Rx 6500 XT", "4gb de vram", 52000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 16);
-const product6 = new product("Grafica Amd Rx 6500 XT", "4gb de vram", 52000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 16);
-const product7 = new product("Grafica Amd Rx 6500 XT", "4gb de vram", 52000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 16);
-const product8 = new product("Grafica Amd Rx 6500 XT", "4gb de vram", 52000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 16);
-const product9 = new product("Grafica Amd Rx 6500 XT", "4gb de vram", 52000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 16);
-const product10 = new product("Grafica Amd Rx 6500 XT", "4gb de vram", 52000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 16);
+const product6 = new product("Grafica Amd Rx 6600", "8GB de vram", 78000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 15);
+const product7 = new product("Grafica Amd Rx 6700 XT", "12GB de vram", 109000, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 20);
+const product8 = new product("Procesador Amd RYZEN 5 3600", "4gb de vram", 31990, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 21);
+const product9 = new product("Procesador Intel i3-9100f", "4.2 GHZ", 20308, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 16);
+const product10 = new product("Procesador Intel i5-10400f", "4.3 GHZ", 33019, "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg", "aaae", 15);
 
 const productVacio = new product("", "", "", "", "", "");
 const productPrueba = new product("Producto Prueba", "esto es un producto prueba", 200, "Sin imagen", "abc123", 25);
@@ -44,6 +35,15 @@ class ProductManager {
     constructor(path) {
         this.path = ruta;
     }
+    
+    crearArchivo = async (ruta) => {
+        if (!fs.existsSync(ruta)){
+            await fs.promises.writeFile(ruta, "[]")
+        }else if ((await fs.promises.readFile(ruta,"utf-8")).length==0){
+            await fs.promises.writeFile(ruta, "[]")
+        }
+    }
+    
 
     checkProduct = async() => {
         return fs.existsSync(this.path);
@@ -54,20 +54,24 @@ class ProductManager {
     }
 
     addProduct = async (newProduct) => {
+        console.log(1);
         if (toString(newProduct.id).length > 0 && newProduct.title.length > 0 && newProduct.description.length > 0 && toString(newProduct.price).length > 0 && newProduct.thumbnail.length > 0 && newProduct.code.length > 0 && toString(newProduct.stock).length > 0) {
             let contenido = await fs.promises.readFile(this.path, "utf-8");
             let arrayproducts = JSON.parse(contenido);
+            console.log(contenido);
             if (arrayproducts.filter(product => product.code == newProduct.code).length > 0) {
                 console.error("Ya existe el producto");
             }
             else 
             {
                 let contenido = await fs.promises.readFile(this.path, "utf-8");
+                console.log(contenido);
                 let aux = JSON.parse(contenido);
                 console.log()
                 if (aux.length>0){
-                    const idAutoincremental = aux[aux.length-1].id+1; //Esto para que sea incremental dependiendo del ultimo elemento
+                    const idAutoincremental = aux[aux.length-1].id+1;
                     aux.push({ id: idAutoincremental, ...newProduct });
+                    console.log(aux)
                     await fs.promises.writeFile(this.path, JSON.stringify(aux));
                 }
                 else{
@@ -85,7 +89,7 @@ class ProductManager {
     getAllProducts = async () => {
         let contenido = await fs.promises.readFile(this.path, 'utf-8')  
         let aux = JSON.parse(contenido)
-        return aux;   
+        return aux; 
     }
     updateProduct = async ({id, title, description, price, thumbnail, code, stock})  => {
         let contenido = await fs.promises.readFile(this.path, 'utf-8')  
@@ -159,8 +163,8 @@ class ProductManager {
             console.error("No se encontró el producto que desea eliminar")
         }        
     }
-
     cargarArchivo = async () => {
+        console.log("hola")
         await this.crearArchivo();
         await this.addProduct(product1);
         await this.addProduct(product2);

@@ -1,13 +1,19 @@
-import productManager from "./productManager.ks"
-import { urlencoded } from "express";
+import productManager from "./productManager.js"
+import { query, urlencoded } from "express";
 import fs from "fs"
+import { createRequire } from 'node:module';
 
-const express = require("express");
+const require = createRequire(import.meta.url);
+let data = require('./data.json')
+
+import express from "express"
+
+
 
 const app = express();
 
 const PORT = 8080;
-const manager = new productManager("./src/data.json");
+const manager = new productManager(data);
 
 app.use(express.urlencoded( { extended: true} ));
 
@@ -19,13 +25,14 @@ app.get("/", async(req, res) => {
 });
 
 app.get("/products", async (req, res) => {
+
     if (!manager.getAllProducts()) {
         await manager.cargarArchivo();
     }
 
     const products = await manager.getAllProducts(); 
     if (products.length>0) {
-        let { limit } = req.query;
+        const { limit } = req.query;
         let data;
         if ( !limit ) {
             data = products;
@@ -43,10 +50,11 @@ app.get ("/products/:pid", async (req, res) => {
     const product = await manager.getProductById(parseInt(req.params.pid));
     JSON.stringify(product);
 
-    if (product) {
-        res-semd (`Producto: ${product.title} con la descripción: ${product.description} Precio: $${product.price}`)
+    if (product.id === undefined) {
+        res.send ("No se encontró el producto");
+        
     } else {
-        res.send ("No se encontró el producto")
+        res.send (`Producto: ${product.title}, descripción: ${product.description}, Precio: $${product.price}`)
     }
 });
 

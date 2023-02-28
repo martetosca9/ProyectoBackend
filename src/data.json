@@ -1,1 +1,93 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "Grafica Nvidia GTX 1650",
+    "description": "4GB de vram",
+    "price": 68000,
+    "thumbnail": "https://m.media-amazon.com/images/I/61rzWyQBAoL._AC_SL1024_.jpg",
+    "code": "aaaa",
+    "stock": 14
+  },
+  {
+    "id": 2,
+    "title": "Grafica Nvidia GTX 1660 SUPER",
+    "price": "6gb de vram",
+    "price": 87000,
+    "thumbnail": "https://arrichetta.com.ar/wp-content/uploads/2020/10/c5e5f2cf-b57c-4a5e-b9d3-d0bb76bc768d.c1cacebe43e9f18d92ce81be46266920.jpeg",
+    "chode": "aaab",
+    "stock": 18
+  },
+
+  {
+    "id": 3,
+    "title": "Grafica Nvidia RTX 2060",
+    "description": "12gb de vram",
+    "price": 94000,
+    "thumbnail": "https://fullh4rd.com.ar/img/productos/Pics_Prod/video-geforce-rtx-2060-6gb-msi-ventus-gp-oc-0.jpg",
+    "code": "aaac",
+    "stock": 17
+  },
+  {
+    "id": 4,
+    "title": "Grafica Nvidia RTX 3050",
+    "description": "8gb de vram",
+    "price": 94000,
+    "thumbnail": "https://fullh4rd.com.ar/img/productos/Pics_Prod/video-geforce-rtx-3050-8gb-evga-xc-gaming-dual-fan-0.jpg",
+    "code": "aaad",
+    "stock": 32
+  },
+  {
+    "id": 5,
+    "title": "Grafica Amd Rx 6500 XT",
+    "description": "4gb de vram",
+    "price": 52000,
+    "thumbnail": "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/video-radeon-rx-6500-xt-4gb-gigabyte-gaming-oc-0.jpg",
+    "code": "aaae",
+    "stock": 16
+  },
+  {
+    "id": 6,
+    "title": "Grafica Amd Rx 6600",
+    "description": "8GB de vram",
+    "price": 78000,
+    "thumbnail": "https://www.soscomputacion.com.ar/23457/placa-de-video-rx6600xt-8gb-gddr6-sapphire-radeon-pulse-displayport-hdmi.jpg",
+    "code": "aaaf",
+    "stock": 15
+  },
+  {
+    "id": 7,
+    "title": "Grafica Amd Rx 6700 XT",
+    "description": "12GB de vram",
+    "price": 109000,
+    "thumbnail": "https://www.deffo.com.ar/wp-content/uploads/2022/09/GV-R67XTGAMING-OC-12GD-8-600x600.webp",
+    "code": "aaag",
+    "stock": 20
+  },
+  {
+    "id": 8,
+    "title": "Procesador Amd RYZEN 5 3600",
+    "description": "4gb de vram",
+    "price": 31990,
+    "thumbnail": "https://app.contabilium.com/files/explorer/16752/Productos-Servicios/concepto-3830078.jpg",
+    "code": "aaah",
+    "stock": 21
+  },
+  {
+    "id": 9,
+    "title": "Procesador Intel i3-9100f",
+    "description": "4.2 GHZ",
+    "price": 20308,
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_969218-MLA40452701859_012020-O.jpg",
+    "code": "aaai",
+    "stock": 16
+  },
+  {
+    "id": 10,
+    "title": "Procesador Intel i5-10400f",
+    "description": "4.3 GHZ",
+    "price": 33019,
+    "thumbnail": "http://www.siscomp.com.ar/image/cache/data/COMPUTADORAS/Procesadores/3-166-500x500.jpg",
+    "code": "aaaj",
+    "stock": 15
+  }
+]
