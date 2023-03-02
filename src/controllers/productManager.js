@@ -45,7 +45,7 @@ class ProductManager {
     }
     
 
-    checkProduct = async() => {
+    checkArchivo = async() => {
         return fs.existsSync(this.path);
     }
 
@@ -175,33 +175,6 @@ class ProductManager {
 }
 
 
-
-
-
-
-//Creo un product manager
-// productManager = new ProductManager()
-
-
-
-
-// const tests = async () => {
-    
-//     await crearArchivo(ruta); 
-//     console.log(await productManager.getAllProducts()); 
-
-//     await productManager.addProduct(productPrueba);
-//     console.log(await productManager.getAllProducts()); 
-
-//     console.log(await productManager.getProductById(1)); 
-//     await productManager.updateProduct({id: 1, title:"Prueba cambiando titulo y descripcion del elemento 1", description:"Exito"}) 
-
-//     console.log(await productManager.getProductById(1));
-//     await productManager.deleteProductById(1); 
-    
-// }
-
-// tests();
 
 
 export default ProductManager;
