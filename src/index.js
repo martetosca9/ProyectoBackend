@@ -22,7 +22,7 @@ const PORT = 8080;
 
 //Middlewares
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json())
+app.use(express.json());
 
 //Routes
 app.use('/static', express.static(__dirname + '/public')) //En "/public" va la carpeta que deseo colocar luego de static
@@ -30,4 +30,8 @@ app.use("/api/products", routerProduct)
 app.use("/api/carts", routerCart)
 app.post("/upload",upload.single("product"),(req,res)=>{
     res.send("Imagen Cargada")
-})
+});
+
+app.listen(PORT, ()=> {
+    console.log ( `server on port ${PORT}` );
+});
