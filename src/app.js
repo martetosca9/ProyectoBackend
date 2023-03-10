@@ -21,6 +21,10 @@ app.listen(8080, () => {
 
 export {manager, cartManager}
 
+app.use((req, res, next) => {
+    req.io = io;
+    next();
+});
 
 
 // const require = createRequire(import.meta.url);
