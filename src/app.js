@@ -1,9 +1,10 @@
 import express, {json} from "express";
-import productManager from "../src/controllers/productManager.js"
-import productsRouter from "../src/routes/products.routes.js"
-import cartsRouter from "../src/routes/cart.routes.js"
+import productManager from "../src/controllers/productManager.js";
+import { CartManager } from "./controllers/CartManager.js";
+import productsRouter from "../src/routes/products.routes.js";
+import cartsRouter from "../src/routes/cart.routes.js";
 import { query, urlencoded } from "express";
-import fs from "fs"
+import fs from "fs";
 import { createRequire } from 'node:module';
 
 const manager = new productManager("./src/models/data.json");

@@ -164,7 +164,6 @@ class ProductManager {
         }        
     }
     cargarArchivo = async () => {
-        console.log("hola")
         await this.crearArchivo();
         await this.addProduct(product1);
         await this.addProduct(product2);
