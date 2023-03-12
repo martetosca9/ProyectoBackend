@@ -6,6 +6,7 @@ import cartsRouter from "../src/routes/cart.routes.js";
 import { query, urlencoded } from "express";
 import fs from "fs";
 import { createRequire } from 'node:module';
+import { Server } from 'socket.io';
 
 const manager = new productManager("./src/models/data.json");
 const cartManager = new CartManager("./src/models/carts.json");
@@ -16,9 +17,11 @@ app.use(json());
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 
-app.listen(8080, () => {
+let server = app.listen(8080, () => {
     console.log("server listening on port 8080.");
 });
+
+let io = new Server(server);
 
 export {manager, cartManager}
 

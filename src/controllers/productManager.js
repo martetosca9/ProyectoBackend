@@ -1,5 +1,5 @@
 import fs from "fs";
-const ruta = "./src/data.json";
+const ruta = "./src/models/data.json";
 
 
 class product {

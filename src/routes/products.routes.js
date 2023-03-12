@@ -25,6 +25,7 @@ routerProduct.get("/", async (req, res) => {
         }
     }catch(error){
         res.send("Probablemente no exista el archivo")
+        console.log(error)
     }
 
 

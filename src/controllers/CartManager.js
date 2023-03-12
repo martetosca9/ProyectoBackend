@@ -22,18 +22,18 @@ export class CartManager {
     }
     crearCarritoVacio = async () => {
         let contenido = await fs.promises.readFile(this.path, "utf-8");
-        let aux = JSON.parse(contenido);
-        if (aux.length > 0) {
-            const idAutoincremental = aux[aux.length - 1].id + 1; //Esto para que sea incremental dependiendo del ultimo elemento
+        let db = JSON.parse(contenido);
+        if (db.length > 0) {
+            const idAutoincremental = db[db.length - 1].id + 1; //Esto para que sea incremental dependiendo del ultimo elemento
             let carrito = new Cart(idAutoincremental, []);
-            aux.push(carrito)
-            await fs.promises.writeFile(this.path, JSON.stringify(aux));
+            db.push(carrito)
+            await fs.promises.writeFile(this.path, JSON.stringify(db));
             return `Carrrito vacio creado con el id: ${idAutoincremental}`
         } else {
             const idAutoincremental = 1;
             let carrito = new Cart(idAutoincremental, []);
-            aux.push(carrito)
-            await fs.promises.writeFile(this.path, JSON.stringify(aux));
+            db.push(carrito)
+            await fs.promises.writeFile(this.path, JSON.stringify(db));
             return `Carrrito vacio creado con el id: ${idAutoincremental}`
         }
     }
@@ -97,7 +97,6 @@ export class CartManager {
         }else{
             return "No se encuentra el carrito"
         }
-      
 
     }
     getAllCarts= async()=> { //Este no es requerido por la entrega pero lo agrego para el testing de la misma
@@ -112,13 +111,16 @@ export class CartManager {
         if (this.checkArchivo()){
             
             
-            let contenido = await fs.promises.readFile(this.path, 'utf-8')  
+            let dbString = await fs.promises.readFile(this.path, 'utf-8')  
             let arrayCarritos = JSON.parse(contenido);
             let index = arrayCarritos.findIndex(cart => cart.id ===idCart);
 
             if (arrayCarritos[index]){
-                let aux = JSON.parse(contenido)     
-                let carrito = aux.find(carritos => carritos.id===idCart)   
+
+                let db = JSON.parse(dbString)     
+                let carrito = aux.find(carritos => carritos.id===idCart)
+
+                return arrayCarritos[index]
                 if (carrito.products.length>0){
                     return carrito.products
                 }else
@@ -132,7 +134,6 @@ export class CartManager {
         }else{
             return "No existe el archivo"
         }
-       
     }
     deleteProductById= async(cid,pid)=> {
         let contenido = await fs.promises.readFile(this.path, 'utf-8')
@@ -153,7 +154,5 @@ export class CartManager {
         }else{
             return "No existe el carrito"
         }
-
-      
     }
 }
